@@ -99,6 +99,23 @@ return [
     'app_setting_twitter_app_id_help' => 'Copy/Past your twitter application id',
     'app_setting_twitter_app_secret' => 'Application Secret',
     'app_setting_twitter_app_secret_help' => 'Copy/Past your twitter application secret key',
+
+    'area_admin' => 'Area Admin Configuration',
+    'area_admin_plural' => 'Area Admins',
+    'area_admin_details' => 'Area Admin Details',
+    'area_name' => 'Area Name',
+    'area_name_help' => 'Insert Area Name',
+    'area_admin_name' => 'Area Admin Name',
+    'area_admin_name_help' => 'Insert Area Admin Name',
+    'area_admin_user_name' => 'UserName',
+    'area_admin_user_name_help' => 'Insert UserName',
+    'area_admin_email' => 'Email',
+    'area_admin_email_help' => 'Insert Email',
+    'area_admin_phone' => 'Phone',
+    'area_admin_phone_help' => 'Insert Phone',
+    'area_admin_password' => 'Password',
+    'area_admin_password_help' => 'Insert Password',
+    'area_admin_create' => 'Create Area Admin',
     //---------------------------------------BBBB---------------------------------------
     //---------------------------------------CCCC---------------------------------------
     'calories' => "Calories",
@@ -306,6 +323,8 @@ return [
     'restaurants_table' => "Restaurant List",
     'restaurant_users' => 'Restaurant Owner',
     'role' => 'Role',
+    'role_super' => 'super',
+    'role_area' => 'area',
     'restaurant_payout_request' => 'Restaurants Payouts Request',
     'drivers_payout_request' => 'Drivers Payouts Request',
     //---------------------------------------SSSS---------------------------------------

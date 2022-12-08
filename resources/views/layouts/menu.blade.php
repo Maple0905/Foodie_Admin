@@ -2,7 +2,7 @@
 
     <!-- User profile image -->
 
-    <!-- <div class="profile-img"> 
+    <!-- <div class="profile-img">
 
         <img src="{{ asset('/images/users/flag.png') }}" alt="user" />
         <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
@@ -176,7 +176,7 @@
 
               <span class="hide-menu">{{trans('lang.book_table')}}</span>
 
-          </a>           
+          </a>
       </li> -->
 
         <!-- <li><a class="has-arrow waves-effect waves-dark" href="{!! url('users') !!}" aria-expanded="false">
@@ -185,7 +185,7 @@
 
                 <span class="hide-menu">{{trans('lang.app_setting')}}</span>
 
-            </a>           
+            </a>
         </li> -->
 
 
@@ -216,6 +216,13 @@
 
         </li>
 
+        <li>
+            <a class="has-arrow waves-effect waves-dark" href="{!! url('users/area_admin') !!}" aria-expanded="false">
+                <i class="mdi mdi-account-multiple"></i>
+                <span class="hide-menu">{{trans('lang.area_admin_plural')}}</span>
+            </a>
+        </li>
+
         <!-- <li> <a class="has-arrow waves-effect waves-dark" href="{!! url('restaurants') !!}" aria-expanded="false">
 
                 <i class="mdi mdi-settings"></i>
@@ -226,7 +233,7 @@
 
             <ul aria-expanded="false" class="collapse">
 
-                <li><a href="{!! url('settings/mobile/globals') !!}">{{trans('lang.app_setting_globals')}}</a></li>               
+                <li><a href="{!! url('settings/mobile/globals') !!}">{{trans('lang.app_setting_globals')}}</a></li>
 
             </ul>
 
@@ -251,7 +258,7 @@
 
                 <li><a href="{!! url('settings/payment/stripe') !!}">{{trans('lang.app_setting_payment')}}</a></li>
 
-                
+
 
                 <li><a href="{!! url('settings/app/notifications') !!}">{{trans('lang.app_setting_notifications')}}</a>
                 </li>

@@ -71,6 +71,11 @@ Route::get('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'edi
 Route::get('/users/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('users.profile');
 Route::post('/users/profile/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.profile.update');
 Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+Route::get('/users/area_admin', [App\Http\Controllers\UserController::class, 'area_admin_index'])->name('users.area_admin');
+Route::get('/users/area_admin/create', [App\Http\Controllers\UserController::class, 'area_admin_create'])->name('users.area_admin.create');
+Route::post('/users/area_admin/store', [App\Http\Controllers\UserController::class, 'area_admin_store'])->name('users.area_admin.store');
+Route::get('/users/area_admin/edit/{$id}', [App\Http\Controllers\UserController::class, 'area_admin_edit'])->name('users.area_admin.edit');
+Route::post('/users/area_admin/update/{$id}', [App\Http\Controllers\UserController::class, 'area_admin_update'])->name('users.area_admin.update');
 
 Route::get('/foods', [App\Http\Controllers\FoodController::class, 'index'])->name('foods');
 Route::get('/foods/edit/{id}', [App\Http\Controllers\FoodController::class, 'edit'])->name('foods.edit');

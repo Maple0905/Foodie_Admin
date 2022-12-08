@@ -1,8 +1,8 @@
  @extends('layouts.app')
 
-<?php 
+<?php
 
-error_reporting(E_ALL ^ E_NOTICE); 
+error_reporting(E_ALL ^ E_NOTICE);
  ?>
 
 
@@ -15,7 +15,7 @@ error_reporting(E_ALL ^ E_NOTICE);
             <!-- Bread crumb and right sidebar toggle -->
 
             <!-- ============================================================== -->
-            
+
             <div class="row page-titles">
 
                 <div class="col-md-5 align-self-center">
@@ -59,7 +59,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
                 <div class="row daes-top-sec">
 
-                    
+
 
                     <!-- Column -->
 
@@ -141,13 +141,13 @@ error_reporting(E_ALL ^ E_NOTICE);
                                     <a href="{!! route('drivers') !!}" class="small-box-footer">{{trans('lang.dashboard_more_info')}}
                                     <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
-                                    
+
                             </div>
 
                         </div>
 
                     </div>
-                    
+
 
                     <!-- Column -->
 
@@ -179,7 +179,7 @@ error_reporting(E_ALL ^ E_NOTICE);
                                     <a href="{!! route('orders') !!}" class="small-box-footer">{{trans('lang.dashboard_more_info')}}
                                     <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
-                                    
+
                             </div>
 
                         </div>
@@ -204,7 +204,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
                                     <h5 class="text-muted m-b-0">{{trans('lang.dashboard_total_earnings')}} <span style="font-size: 11px">({{trans('lang.dashboard_after taxes')}})</span></h5>
                                     <a href="{{route('payments')}}" class="small-box-footer">{{trans('lang.dashboard_more_info')}} <i class="fa fa-arrow-circle-right"></i></a>
-                                   </div> 
+                                   </div>
 
                             </div>
 
@@ -212,7 +212,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
                     </div>
 
-                    
+
                     <!-- Column -->
 
                      <div class="col-lg-4 col-md-6">
@@ -231,7 +231,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
                                     <h5 class="text-muted m-b-0">{{trans('lang.admin_commission')}}</h5>
                                     <a href="{{route('payments')}}" class="small-box-footer">{{trans('lang.dashboard_more_info')}} <i class="fa fa-arrow-circle-right"></i></a>
-                                   </div> 
+                                   </div>
 
                             </div>
 
@@ -240,7 +240,7 @@ error_reporting(E_ALL ^ E_NOTICE);
                     </div>
 
                 </div>
-    
+
 
             <div class="row daes-sec-sec">
             <div class="col-lg-6">
@@ -260,12 +260,12 @@ error_reporting(E_ALL ^ E_NOTICE);
                                 </ul>
                             </span>
                             </div>
-                            
+
                             <a href="{{route('payments')}}">{{trans('lang.dashboard_view_all_payments')}}</a>
                         </div>
                     </div>
                     <div class="card-body">
-                    
+
 
                         <div class="position-relative mb-4">
                             <canvas id="sales-chart" height="200"></canvas>
@@ -324,7 +324,7 @@ error_reporting(E_ALL ^ E_NOTICE);
                                     </tr>
                                  </thead>
                                 <tbody id="append_list_recent_order">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -357,15 +357,15 @@ error_reporting(E_ALL ^ E_NOTICE);
                     </div>
                 </div>
         </div>
-               
 
-            
 
-              
 
-               
 
-                
+
+
+
+
+
 
                 <!-- ============================================================== -->
 
@@ -387,7 +387,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
             <!-- ============================================================== -->
 
-           
+
 
             <!-- ============================================================== -->
 
@@ -403,7 +403,6 @@ error_reporting(E_ALL ^ E_NOTICE);
 @section('scripts')
 <script src="{{asset('js/chart.js')}}"></script>
 <script>
-    
 
 var db = firebase.firestore();
 var currency = db.collection('settings');
@@ -420,7 +419,7 @@ refCurrency.get().then( async function(snapshots){
 $(document).ready(function() {
 
 currency.where("isActive","==",true).get().then((snapshot) => {
-    
+
 });
 
     jQuery("#data-table_processing").show();
@@ -477,7 +476,7 @@ db.collection('vendors').get().then(
             start = snapshots.docs[snapshots.docs.length - 1];
             endarray.push(snapshots.docs[0]);
         }
-    }); 
+    });
 
 
    var offest=1;
@@ -498,7 +497,7 @@ db.collection('vendors').get().then(
             start = snapshots.docs[snapshots.docs.length - 1];
             endarray.push(snapshots.docs[0]);
         }
-    }); 
+    });
 
    var offest=1;
   var pagesize=5;
@@ -518,7 +517,7 @@ db.collection('vendors').get().then(
             start = snapshots.docs[snapshots.docs.length - 1];
             endarray.push(snapshots.docs[0]);
         }
-    }); 
+    });
 
 
 
@@ -548,15 +547,15 @@ db.collection('vendors').get().then(
                             extras_price=parseFloat(product.extras_price)*parseInt(product.quantity);
                         }
                         if(!isNaN(extras_price)){
-                            var productTotal = (parseFloat(product.price)*parseInt(product.quantity))+extras_price;    
+                            var productTotal = (parseFloat(product.price)*parseInt(product.quantity))+extras_price;
                         }else{
-                            var productTotal = (parseFloat(product.price)*parseInt(product.quantity));    
+                            var productTotal = (parseFloat(product.price)*parseInt(product.quantity));
                         }
                         if(!isNaN(productTotal)){
                             price = price + productTotal;
                             minprice=minprice+productTotal;
                         }
-                        
+
                     }
                 })
 
@@ -566,15 +565,15 @@ db.collection('vendors').get().then(
                     price=price-parseFloat(discount);
                     minprice=minprice-parseFloat(discount);
                   }
-                  
-                
-                
+
+
+
 
                 if(orderData.adminCommission!=undefined && orderData.adminCommissionType!=undefined && orderData.adminCommission>0 && minprice>0){
                     var commission = 0;
                     if(orderData.adminCommissionType=="Percent" ){
                         commission = (minprice*parseFloat(orderData.adminCommission))/100;
-                        
+
                     }else{
                         commission = parseFloat(orderData.adminCommission);
                     }
@@ -584,7 +583,7 @@ db.collection('vendors').get().then(
                     var commission = parseFloat(orderData.adminCommission);
                     adminCommission = commission + adminCommission;
                 }
-                
+
                 tax = 0;
                 if(orderData.hasOwnProperty('taxSetting')){
                     if(orderData.taxSetting.type && orderData.taxSetting.tax){
@@ -626,12 +625,12 @@ db.collection('vendors').get().then(
 
                 }
                 catch(err) {
-                  
+
 
                     var datas = new Date(orderData.createdAt._seconds * 1000);
-                        
+
                         var dates=firebase.firestore.Timestamp.fromDate(datas);
-                        
+
                         db.collection('restaurant_orders').doc(orderData.id).update({'createdAt':dates}).then(() => {
 
                         console.log('Provided document has been updated in Firestore');
@@ -644,19 +643,19 @@ db.collection('vendors').get().then(
 
                 }
 
-                
-                
+
+
 
             })
 
             if(currencyAtRight){
                 totalEarning = parseFloat(totalEarning).toFixed(2)+""+currentCurrency;
                 adminCommission = parseFloat(adminCommission).toFixed(2)+""+currentCurrency;
-            }else{                
+            }else{
                 totalEarning = currentCurrency+""+parseFloat(totalEarning).toFixed(2);
                 adminCommission = currentCurrency+""+parseFloat(adminCommission).toFixed(2);
             }
-            
+
             $("#earnings_count").append(totalEarning);
             $("#earnings_count_graph").append(totalEarning);
             $("#admincommission_count_graph").append(adminCommission);
@@ -682,22 +681,22 @@ db.collection('vendors').get().then(
 
                 var route = '<?php echo route("restaurants.edit",":id");?>';
                 route = route.replace(':id',val.id);
-                
+
                 var routeview = '<?php echo route("restaurants.view",":id");?>';
                 routeview = routeview.replace(':id',val.id);
 
                 html=html+'<tr>';
                 if(val.photo == ''){
-                    
+
                     html=html+'<td class="text-center"><img class="img-circle img-size-32 mr-2" style="width:60px;height:60px;" src="'+placeholderImage+'" alt="image"></td>';
                 }else{
                     html=html+'<td class="text-center"><img class="img-circle img-size-32 mr-2" style="width:60px;height:60px;" src="'+val.photo+'" alt="image"></td>';
                 }
-                
+
                 html=html+'<td data-url="'+routeview+'" class="redirecttopage">'+val.title+'</td>';
 
                 if( val.hasOwnProperty('reviewsCount') && val.reviewsCount!=0 ){
-                    rating = Math.round(parseFloat(val.reviewsSum)/parseInt(val.reviewsCount)); 
+                    rating = Math.round(parseFloat(val.reviewsSum)/parseInt(val.reviewsCount));
                    // rating =Math.round(rating);
                 }else{
                     rating =0;
@@ -717,7 +716,7 @@ db.collection('vendors').get().then(
                 rating=0;
                 count++;
           });
-          return html;      
+          return html;
     }
 
 
@@ -728,10 +727,10 @@ db.collection('vendors').get().then(
                 val=listval.data();
                 var driverroute = '<?php echo route("drivers.edit",":id");?>';
                 driverroute = driverroute.replace(':id',val.id);
-                
+
                 html=html+'<tr>';
                 if(val.profilePictureURL == ''){
-                    
+
                     html=html+'<td class="text-center"><img class="img-circle img-size-32 mr-2" style="width:60px;height:60px;" src="'+placeholderImage+'" alt="image"></td>';
                 }else{
                     html=html+'<td class="text-center"><img class="img-circle img-size-32 mr-2" style="width:60px;height:60px;" src="'+val.profilePictureURL+'" alt="image"></td>';
@@ -743,7 +742,7 @@ db.collection('vendors').get().then(
                 html=html+'</tr>';
                 count++;
           });
-          return html;      
+          return html;
     }
 
     function buildOrderHTML(snapshots){
@@ -758,7 +757,7 @@ db.collection('vendors').get().then(
                 restaurantroute = restaurantroute.replace(':id',val.vendorID);
 
                 html=html+'<tr>';
-                
+
                 html=html+'<td data-url="'+route+'" class="redirecttopage">'+val.id+'</td>';
 
                 var price=0;
@@ -768,7 +767,7 @@ db.collection('vendors').get().then(
                 if(val.tip_amount!=undefined){
                     price=parseInt(val.tip_amount)+price;
                 }
-                
+
                 // val.products.forEach((product)=> {
 
                 //     if(product.price && product.quantity != 0){
@@ -794,7 +793,7 @@ db.collection('vendors').get().then(
                 html=html+'</a></tr>';
                 count++;
           });
-          return html;      
+          return html;
     }
 
 
@@ -846,7 +845,7 @@ db.collection('vendors').get().then(
                                     return '$'+value;
                                 }
 
-                                
+
                             }, ticksStyle)
                         }],
                         xAxes: [{
@@ -862,7 +861,7 @@ db.collection('vendors').get().then(
         }
 
         $(document).ready(function() {
-            $(document.body).on('click', '.redirecttopage' ,function(){    
+            $(document.body).on('click', '.redirecttopage' ,function(){
                 var url=$(this).attr('data-url');
                 window.location.href = url;
             });
@@ -884,10 +883,10 @@ db.collection('vendors').get().then(
         var deliveryCharge = snapshotsProducts.deliveryCharge;
         var totalProductPrice=0;
         var total_price = 0;
-        
+
         var intRegex = /^\d+$/;
         var floatRegex = /^((\d+(\.\d *)?)|((\d*\.)?\d+))$/;
-        
+
         if (products) {
 
           products.forEach((product) => {
@@ -909,7 +908,7 @@ db.collection('vendors').get().then(
 
           });
         }
-          
+
           if(intRegex.test(discount) || floatRegex.test(discount)) {
 
             discount=parseFloat(discount).toFixed(2);
@@ -937,13 +936,13 @@ db.collection('vendors').get().then(
          if(!isNaN(tax)){
             total_price = parseFloat(total_price) + parseFloat(tax);
          }
-             
-          
+
+
           if(intRegex.test(deliveryCharge) || floatRegex.test(deliveryCharge)) {
 
                 deliveryCharge=parseFloat(deliveryCharge).toFixed(2);
                 total_price +=parseFloat(deliveryCharge);
-                
+
                 if(currencyAtRight){
                   deliveryCharge_val = deliveryCharge+""+currentCurrency;
                 }else{
@@ -951,13 +950,13 @@ db.collection('vendors').get().then(
                 }
           }
 
-          
+
           if(intRegex.test(tip_amount) || floatRegex.test(tip_amount)) {
 
               tip_amount=parseFloat(tip_amount).toFixed(2);
               total_price +=parseFloat(tip_amount);
               total_price=parseFloat(total_price).toFixed(2);
-              
+
                 if(currencyAtRight){
                   tip_amount_val = tip_amount+""+currentCurrency;
                 }else{

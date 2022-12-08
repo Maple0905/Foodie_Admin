@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 class DriverController extends Controller
-{   
+{
+    private $database;
 
     public function __construct()
     {
         $this->middleware('auth');
+        $this->database = \App\Services\FirebaseService::connect();
     }
-    
+
 	  public function index()
     {
         return view("drivers.index");
