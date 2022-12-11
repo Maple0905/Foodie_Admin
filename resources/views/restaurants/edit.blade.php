@@ -406,6 +406,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 <script>
     var id = "<?php echo $id;?>";
+    var role = "<?php echo $role; ?>";
+    var area_admins = <?php echo $area_admins; ?>;
+    var admin_id;
 
     var database = firebase.firestore();
     var ref_deliverycharge = database.collection('settings').doc("DeliveryCharge");
@@ -427,8 +430,6 @@
         var placeholderImageData = snapshotsimage.data();
         placeholderImage = placeholderImageData.image;
     })
-
-    var admin_id;
 
 
     ref_deliverycharge.get().then(async function (snapshots_charge) {
@@ -456,8 +457,15 @@
         ref.get().then(async function (snapshots) {
             try {
                 var restaurant = snapshots.docs[0].data();
+
                 admin_id = restaurant.admin_id;
-                $(".area_admin_email").val(admin_id);
+                if (role == 'super') {
+                    for (i = 0 ; i < area_admins.length ; i ++) {
+                        if (admin_id == area_admins[i].id) {
+                            $(".area_admin_email").val(area_admins[i].email);
+                        }
+                    }
+                }
 
                 $(".restaurant_name").val(restaurant.title);
                 if (restaurant.filters) {
@@ -876,6 +884,15 @@
                     'userBankDetails': userBankDetails
                 }).then(function (result) {
 
+                    if (role == 'super') {
+                        for (i = 0 ; i < area_admins.length ; i ++) {
+                            if ($(".area_admin_email").val() == area_admins[i].email) {
+                                admin_id = area_admins[i].id;
+                                break;
+                            }
+                        }
+                    }
+
                     geoFirestore.collection('vendors').doc(id).update({
                         'title': restaurantname,
                         'description': description,
@@ -899,7 +916,8 @@
                         'restaurantCost': restaurantCost,
                         'openDineTime': openDineTime,
                         'closeDineTime': closeDineTime,
-                        'DeliveryCharge': DeliveryCharge
+                        'DeliveryCharge': DeliveryCharge,
+                        'admin_id': admin_id
                     }).then(function (result) {
                         window.location.href = '{{ route("restaurants")}}';
                     });

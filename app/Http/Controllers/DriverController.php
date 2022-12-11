@@ -1,31 +1,38 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class DriverController extends Controller
 {
-    private $database;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
-        $this->database = \App\Services\FirebaseService::connect();
     }
 
-	  public function index()
-    {
-        return view("drivers.index");
+    public function index() {
+        $user = Auth::user();
+        return view("drivers.index")
+            ->with('role', $user->role)
+            ->with('id', $user->id);
     }
 
-    public function edit($id)
-    {
-    	return view('drivers.edit')->with('id', $id);
-    }
-     public function create()
-    {
-        return view('drivers.create');
+    public function edit($id) {
+        $user = Auth::user();
+        $area_admins = User::where('role', trans('lang.role_area'))->get();
+        return view('drivers.edit')
+            ->with('area_admins', $area_admins)
+            ->with('role', $user->role)
+            ->with('id', $id);
     }
 
+    public function create() {
+        $user = Auth::user();
+        $area_admins = User::where('role', trans('lang.role_area'))->get();
+        return view('drivers.create')
+            ->with('area_admins', $area_admins)
+            ->with('role', $user->role)
+            ->with('id', $user->id);
+    }
 }
-
-

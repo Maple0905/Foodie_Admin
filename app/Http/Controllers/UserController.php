@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
+use function Ramsey\Uuid\Lazy\equals;
+use function Symfony\Component\String\equalsTo;
 
 class UserController extends Controller {
 
@@ -75,8 +77,8 @@ class UserController extends Controller {
     }
 
     public function area_admin_index() {
-        $area_admins = User::all()->where('role', trans('lang.role_area'));
-        return view("settings.users.area_admin_index", compact('area_admins'));
+        $area_admins = User::where('role', trans('lang.role_area'))->get();
+        return view("settings.users.area_admin_index")->with('area_admins', $area_admins);
     }
 
     public function area_admin_create() {
@@ -106,6 +108,14 @@ class UserController extends Controller {
             return Redirect()->back()->with(['message' => $error]);
         }
 
+        $area_admins = User::where('role', trans('lang.role_area'))->get();
+        foreach ($area_admins as $area_admin) {
+            if ($area_admin->email == $area_admin_email) {
+                $error = "Email is already used by other user.";
+                return Redirect()->back()->with(['message' => $error]);
+            }
+        }
+
         User::create([
             'name' => $area_admin_user_name,
             'area_name' => $area_name,
@@ -116,16 +126,13 @@ class UserController extends Controller {
             'role' => trans('lang.role_area')
         ]);
 
-        return redirect()->back();
+        $area_admins = User::where('role', trans('lang.role_area'))->get();
+        return view("settings.users.area_admin_index")->with('area_admins', $area_admins);
     }
 
     public function area_admin_edit($id) {
-        var_dump('123');
-        exit();
         $area_admin = User::findOrFail($id);
-        var_dump($area_admin);
-        exit();
-        return view("settings.users.area_admin_edit", compact('area_admin'));
+        return view("settings.users.area_admin_edit")->with('area_admin', $area_admin);
     }
 
     public function area_admin_update(Request $request, $id) {
@@ -151,6 +158,14 @@ class UserController extends Controller {
             return Redirect()->back()->with(['message' => $error]);
         }
 
+        $area_admins = User::where('role', trans('lang.role_area'))->get();
+        foreach ($area_admins as $area_admin) {
+            if ($area_admin->email == $area_admin_email) {
+                $error = "Email is already used by other user.";
+                return Redirect()->back()->with(['message' => $error]);
+            }
+        }
+
         User::whereId($id)->update([
             'name' => $area_admin_user_name,
             'area_name' => $area_name,
@@ -163,4 +178,9 @@ class UserController extends Controller {
         return redirect()->back();
     }
 
+    public function area_admin_delete($id) {
+        $area_admin = User::findOrFail($id);
+        $area_admin->delete();
+        return redirect()->back();
+    }
 }

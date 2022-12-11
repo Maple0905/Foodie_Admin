@@ -11,7 +11,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use function Symfony\Component\String\length;
 
 class RestaurantController extends Controller {
 
@@ -21,12 +20,18 @@ class RestaurantController extends Controller {
 
     public function index() {
         $user = Auth::user();
-        return view("restaurants.index")->with('id', $user->id)->with('role', $user->role);
+        return view("restaurants.index")
+            ->with('role', $user->role)
+            ->with('id', $user->id);
     }
 
     public function edit($id) {
         $user = Auth::user();
-        return view('restaurants.edit')->with('id', $id)->with('role', $user->role);
+        $area_admins = User::where('role', trans('lang.role_area'))->get();
+        return view('restaurants.edit')
+            ->with('area_admins', $area_admins)
+            ->with('role', $user->role)
+            ->with('id', $id);
     }
 
     public function view($id) {
@@ -55,7 +60,10 @@ class RestaurantController extends Controller {
 
     public function create() {
         $user = Auth::user();
-        $area_admins = User::all()->where('role', trans('lang.role_area'));
-        return view('restaurants.create', compact('area_admins'))->with('role', $user->role)->with('id', $user->id);
+        $area_admins = User::where('role', trans('lang.role_area'))->get();
+        return view('restaurants.create')
+            ->with('area_admins', $area_admins)
+            ->with('role', $user->role)
+            ->with('id', $user->id);
     }
 }

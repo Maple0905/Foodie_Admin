@@ -392,10 +392,6 @@
     var admin_id = <?php echo $id; ?>;
     var role = "<?php echo $role; ?>";
     var area_admins = <?php echo $area_admins; ?>;
-    console.log(Object.keys(area_admins).length);
-    for (i = 0 ; i < Object.keys(area_admins).length ; i ++) {
-        console.log(area_admins[i]);
-    }
 
     $(document).ready(function () {
         jQuery("#data-table_processing").show();
@@ -659,11 +655,9 @@
                         coordinates = new firebase.firestore.GeoPoint(latitude, longitude);
 
                         if (role == 'super') {
-                            for (i = 0 ; i < Object.keys(area_admins).length ; i ++) {
-                                console(area_admins[i]);
-                                if ($(".area_admin_email").value == area_admins[i].email) {
+                            for (i = 0 ; i < area_admins.length ; i ++) {
+                                if ($(".area_admin_email").val() == area_admins[i].email) {
                                     admin_id = area_admins[i].id;
-                                    console.log(admin_id);
                                     break;
                                 }
                             }

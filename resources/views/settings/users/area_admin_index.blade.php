@@ -71,7 +71,7 @@ error_reporting(E_ALL ^ E_NOTICE);
                                             <a href="{{ route('users.area_admin.edit', $area_admin->id) }}">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a>
+                                            <a id="{{ $area_admin->id }}" href="javascript:void(0)" name="area-admin-delete" >
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
@@ -96,5 +96,58 @@ error_reporting(E_ALL ^ E_NOTICE);
         </div>
     </div>
 </div>
+@endsection
 
+@section('scripts')
+<script>
+    var database = firebase.firestore();
+    // var refResData = database.collection('vendors');
+    // var refDriverData = database.collection('users');
+    var deleted_admin_id = 0;
+
+    function getResData(id) {
+        return database.collection('vendors').where("admin_id", "==", parseInt(id));
+    }
+
+    function getDriverData(id) {
+        return database.collection('users').where("role", "==", "driver").where("admin_id", "==", parseInt(id));
+    }
+
+    $(document).on("click", "a[name='area-admin-delete']", function (e) {
+        var id = this.id;
+        var len1 = 0, len2 = 0;
+        console.log(typeof id);
+
+        e.preventDefault();
+
+        var refResData = getResData(id);
+        var refDriverData = getDriverData(id);
+
+        refResData.get().then(function (snapshots) {
+            console.log(snapshots.docs.length);
+            len1 = snapshots.docs.length;
+            snapshots.docs.forEach((listval) => {
+                database.collection('vendors').doc(listval.id).update({'admin_id': deleted_admin_id}).then(function (result) { len1--; });
+            })
+        }).catch(function (err) {
+            console.log(err);
+        });
+
+        refDriverData.get().then(function (snapshots) {
+            console.log(snapshots.docs.length);
+            len2 = snapshots.docs.length;
+            snapshots.docs.forEach((listval) => {
+                database.collection('users').doc(listval.id).update({'admin_id': deleted_admin_id}).then(function (result) {
+                    len2--;
+                    if (len1 + len2 == 0) {
+                        window.location.href = document.URL + '/delete/' + id;
+                    }
+                });
+            })
+        }).catch(function (err) {
+            console.log(err);
+        });
+
+    })
+</script>
 @endsection

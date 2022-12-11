@@ -11,8 +11,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -21,29 +20,25 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
+    public function index() {
         return view('home');
     }
-    
+
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function welcome()
-    {
+    public function welcome() {
         return view('welcome');
     }
 
-    public function dashboard()
-    {
+    public function dashboard() {
         return view('dashboard');
-    }    
-    
-    public function users()
-    {
+    }
+
+    public function users() {
         return view('users');
     }
-    
+
 }
