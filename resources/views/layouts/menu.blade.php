@@ -41,7 +41,7 @@
             </a>
             <ul aria-expanded="false" class="collapse">
                 <li><a href="{!! url('dashboard') !!}">Dashboard</a></li>
-                <li><a href="{!! url('dashboard') !!}">Statistics</a></li>
+                <li><a href="{!! url('statistics') !!}">Statistics</a></li>
             </ul>
         </li>
         <li>

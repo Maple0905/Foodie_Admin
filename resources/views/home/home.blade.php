@@ -126,8 +126,10 @@ error_reporting(E_ALL ^ E_NOTICE);
                             <div class="p-10 bg-info col-md-12 text-center">
                                 <h3 class="text-white box m-b-0"><i class="ti-wallet"></i></h3></div>
                             <div class="align-self-center pt-3 col-md-12 text-center">
-                                <h3 class="m-b-0 text-info" id="admincommission_count"></h3>
-                                <h5 class="text-muted m-b-0">{{trans('lang.admin_commission')}}</h5>
+{{--                                <h3 class="m-b-0 text-info" id="admincommission_count"></h3>--}}
+{{--                                <h5 class="text-muted m-b-0">{{trans('lang.admin_commission')}}</h5>--}}
+                                <h5 class="text-muted m-b-0">{{trans('lang.admin_commission_super')}} : <h3 class="m-b-0 text-info" id="admincommission_count"></h3></h5>
+                                <h5 class="text-muted m-b-0">{{trans('lang.admin_commission_area')}} : <h3 class="m-b-0 text-info" id="admincommission_count"></h3></h5>
                                 <a href="{{route('payments')}}" class="small-box-footer">
                                     {{trans('lang.dashboard_more_info')}} <i class="fa fa-arrow-circle-right"></i>
                                 </a>

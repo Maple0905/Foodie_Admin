@@ -113,7 +113,6 @@ error_reporting(E_ALL ^ E_NOTICE);
     var ref = database.collection('users').where("role", "==", "driver");
     var alldriver = database.collection('users').where("role", "==", "driver");
     ref = role == 'area' ? ref.where("admin_id", "==", id) : ref;
-    alldriver = role == 'area' ? alldriver.where("role", "==", "driver") : alldriver;
     var placeholderImage = '';
     var append_list = '';
 

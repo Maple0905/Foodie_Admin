@@ -9,6 +9,9 @@ return [
     'add_option' => "Add Option",
     'admin_area' => 'Admin Configurations',
     'admin_commission' => "Admin Commission",
+    'admin_commission_super' => "Super Admin",
+    'admin_commission_area' => "Area Admins",
+    'admin_name' => 'Admin Name',
     'app_management' => 'App Management',
     'app_setting' => 'Settings',
     'app_setting_app_name' => 'Application Name',
@@ -116,6 +119,9 @@ return [
     'area_admin_password' => 'Password',
     'area_admin_password_help' => 'Insert Password',
     'area_admin_create' => 'Create Area Admin',
+
+    'added_restaurants' => 'Restaurants Added',
+    'added_drivers' => 'Drivers Added',
     //---------------------------------------BBBB---------------------------------------
     //---------------------------------------CCCC---------------------------------------
     'calories' => "Calories",
@@ -345,6 +351,17 @@ return [
     'setting_desc' => 'Settings Management',
     'symbole_at_right' => "Symbol At Right",
     'saving' => 'Saving ..',
+
+    'statistics' => 'Statistics',
+    'statistics_general' => 'General',
+    'statistics_restaurant' => 'Restaurants',
+    'statistics_driver' => 'Drivers',
+    'statistics_restaurant_name' => 'Restaurant Name',
+    'statistics_driver_name' => 'Driver Name',
+    'statistics_super_commission' => 'Super Admin Commission',
+    'statistics_area_commission' => 'Area Admin Commission',
+    'statistics_total_pay' => 'Total To Pay',
+    'statistics_remaining_payments' => 'Remaining Payments',
     //---------------------------------------TTTT---------------------------------------
     'terms_and_conditions' => "Terms and Conditions",
     'title' => "Title",

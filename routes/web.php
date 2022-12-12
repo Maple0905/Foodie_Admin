@@ -33,7 +33,7 @@ Auth::routes();
 /*Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('welcome');*/
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
-Route::get('/statistics', [App\Http\Controllers\HomeController::class, 'index'])->name('statistics');
+Route::get('/statistics', [App\Http\Controllers\HomeController::class, 'statistics'])->name('statistics');
 Route::get('/users', [App\Http\Controllers\HomeController::class, 'users'])->name('users');
 Route::get('/restaurants', [App\Http\Controllers\RestaurantController::class, 'index'])->name('restaurants');
 Route::get('/restaurants/edit/{id}', [App\Http\Controllers\RestaurantController::class, 'edit'])->name('restaurants.edit');
