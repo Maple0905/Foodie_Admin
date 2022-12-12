@@ -4,7 +4,7 @@ body{text-align: right;}
 .language-options select{background: none; border: 0; color: #fff !important;}
 .language-options select:focus,.language-options select:hover{background: none !important; border: 0; color: #fff !important; box-shadow: none; outline: none;}
 
-.language-options select option{background: #ff683a;}
+.language-options select option{background: #29357d;}
 
 .topbar .top-navbar{padding: 0px 0 0 15px;}
 
@@ -15,7 +15,7 @@ body{text-align: right;}
 transform: rotate(-40deg) translate(0, -50%);}
 
 .sidebar-nav > ul > li > a{border-left: 0 !important;border-right:3px solid transparent !important;}
-.sidebar-nav > ul > li.active > a{border-right:3px solid #FF683A !important;}
+.sidebar-nav > ul > li.active > a{border-right:3px solid #29357d !important;}
 
 .page-wrapper{padding-left: 0; padding-right: 240px;}
 

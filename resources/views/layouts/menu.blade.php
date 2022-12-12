@@ -90,12 +90,14 @@
                 <span class="hide-menu">{{trans('lang.coupon_plural')}}</span>
             </a>
         </li>
+        @if (auth()->user()->role == trans('lang.role_super'))
         <li>
             <a class="has-arrow waves-effect waves-dark" href="{!! url('notification') !!}" aria-expanded="false">
                 <i class="fa fa-table "></i>
                 <span class="hide-menu">{{trans('lang.notification')}}</span>
             </a>
         </li>
+        @endif
 
 {{--        <li><a class="has-arrow waves-effect waves-dark" href="{!! url('booktable') !!}" aria-expanded="false">--}}
 {{--              <i class="fa fa-table "></i>--}}
@@ -121,15 +123,19 @@
                 <li><a href="{!! url('driverpayments') !!}">{{trans('lang.driver_plural')}} {{trans('lang.payment_plural')}}</a></li>
                 <li><a href="{!! url('driversPayouts') !!}">{{trans('lang.drivers_payout')}}</a></li>
                 <li><a href="{!! url('walletstransaction') !!}">{{trans('lang.wallet_transaction')}}</a></li>
+                @if (auth()->user()->role == trans('lang.role_super'))
                 <li><a href="{!! url('payoutRequests/restaurants') !!}">{{trans('lang.payout_request')}}</a></li>
+                @endif
             </ul>
         </li>
+        @if (auth()->user()->role == trans('lang.role_super'))
         <li>
             <a class="has-arrow waves-effect waves-dark" href="{!! url('users/area_admin') !!}" aria-expanded="false">
                 <i class="mdi mdi-account-multiple"></i>
                 <span class="hide-menu">{{trans('lang.area_admin_plural')}}</span>
             </a>
         </li>
+        @endif
 
 {{--        <li>--}}
 {{--            <a class="has-arrow waves-effect waves-dark" href="{!! url('restaurants') !!}" aria-expanded="false">--}}

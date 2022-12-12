@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>    
+    <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/logo-light-icon.png') }}">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -54,7 +54,7 @@
             </div>
 
 
-        
+
 
         <main class="py-4">
             @yield('content')
@@ -71,8 +71,8 @@
     <script src="{{ asset('assets/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
     <script src="{{ asset('js/custom.min.js') }}"></script>
     <script type="text/javascript">
-        jQuery(window).scroll(function() {    
-            var scroll = jQuery(window).scrollTop();    
+        jQuery(window).scroll(function() {
+            var scroll = jQuery(window).scrollTop();
             if (scroll <= 60) {
                 jQuery("body").removeClass("sticky");
             }else{
@@ -80,7 +80,7 @@
             }
         });
     </script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>    
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
@@ -97,18 +97,18 @@
         var ref = database.collection('settings').doc("globalSettings");
          ref.get().then( async function(snapshots){
             try{
-                var globalSettings = snapshots.data();            
+                var globalSettings = snapshots.data();
                 $("#app_name").html(globalSettings.applicationName);
-                $("#logo_web").attr('src',globalSettings.appLogo);
+                // $("#logo_web").attr('src',globalSettings.appLogo);
             }catch(error){
 
             }
-            
-            
+
+
         });
     var langcount=0;
         var languages_list = database.collection('settings').doc('languages');
-        languages_list.get().then( async function(snapshotslang){  
+        languages_list.get().then( async function(snapshotslang){
             snapshotslang=snapshotslang.data();
             if(snapshotslang!=undefined){
                   snapshotslang=snapshotslang.list;
@@ -125,12 +125,12 @@
                   <?php if(session()->get('locale')){ ?>
                             $("#language_dropdown").val("<?php echo session()->get('locale'); ?>");
                    <?php } ?>
-                  
+
             }
          });
 
             var url = "{{ route('changeLang') }}";
-            
+
             $(".changeLang").change(function(){
                 var slug=$(this).val();
                 languages_list_main.forEach((data) => {
@@ -151,7 +151,7 @@
                 let expires = "expires=" + d.toUTCString();
                 document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
             }
-            
+
     </script>
         @yield('scripts')
 </body>
