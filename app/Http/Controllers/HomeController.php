@@ -45,9 +45,11 @@ class HomeController extends Controller
         if ($user->role == trans('lang.role_super')) {
             $area_admins = User::where('role', trans('lang.role_area'))->get();
         } else if ($user->role == trans('lang.role_area')) {
-            $area_admins = $user;
+            $area_admins = User::where('id', $user->id)->get();
         }
-        return view('home.statistics')->with('area_admins', $area_admins);
+        return view('home.statistics')
+            ->with('area_admins', $area_admins)
+            ->with('role', $user->role);
     }
 
     public function users() {

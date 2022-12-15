@@ -34,7 +34,8 @@ $zero = 0;
                             <div id="users-table_filter" class="pull-right">
                                 <label>{{trans('lang.search_by')}}</label>
                                 <select name="selected_search" id="selected_search" class="form-control input-sm">
-                                    <option value="title">{{trans('lang.title')}}</option>
+                                    <option value="title">{{trans('lang.area_name')}}</option>
+                                    <option value="title">{{trans('lang.area_admin_name')}}</option>
                                 </select>
                                 <div class="form-group">
                                     <input type="search" id="search" class="search form-control" placeholder="Search">
@@ -54,23 +55,6 @@ $zero = 0;
                                     </tr>
                                 </thead>
                                 <tbody id="table_general">
-                                @if(auth()->user()->role == trans('lang.role_super'))
-                                    @foreach($area_admins as $area_admin)
-                                        <tr>
-                                            <td>{{$area_admin->area_name}}</td>
-                                            <td>{{$area_admin->area_admin_name}}</td>
-                                            <td id="added_restaurant"></td>
-                                            <td id="added_driver"></td>
-                                        </tr>
-                                    @endforeach
-                                @elseif(auth()->user()->role == trans('lang.role_area'))
-                                    <tr>
-                                        <td>{{$area_admins->area_name}}</td>
-                                        <td>{{$area_admins->area_admin_name}}</td>
-                                        <td id="added_restaurant">0</td>
-                                        <td id="added_driver">0</td>
-                                    </tr>
-                                @endif
                                 </tbody>
                             </table>
                             <div class="data-table_paginate">
@@ -94,8 +78,6 @@ $zero = 0;
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -109,7 +91,8 @@ $zero = 0;
                             <div id="users-table_filter" class="pull-right">
                                 <label>{{trans('lang.search_by')}}</label>
                                 <select name="selected_search" id="selected_search" class="form-control input-sm">
-                                    <option value="title">{{trans('lang.title')}}</option>
+                                    <option value="title">{{trans('lang.area_name')}}</option>
+                                    <option value="title">{{trans('lang.area_admin_name')}}</option>
                                 </select>
                                 <div class="form-group">
                                     <input type="search" id="search" class="search form-control" placeholder="Search">
@@ -122,19 +105,19 @@ $zero = 0;
                             <table id="example24" class="display nowrap table table-hover table-striped table-bordered table table-striped" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <td>{{trans('lang.area_name')}}</td>
-                                        <td>{{trans('lang.admin_name')}}</td>
-                                        <td>{{trans('lang.statistics_restaurant_name')}}</td>
-                                        <td># {{trans('lang.tab_orders')}}</td>
-                                        <td>$ {{trans('lang.tab_orders')}}</td>
-                                        <td>{{trans('lang.statistics_super_commission')}}</td>
-                                        <td>{{trans('lang.statistics_area_commission')}}</td>
-                                        <td>{{trans('lang.statistics_total_pay')}}</td>
-                                        <td>{{trans('lang.payment_plural')}}</td>
-                                        <td>{{trans('lang.statistics_remaining_payments')}}</td>
+                                        <th>{{trans('lang.area_name')}}</th>
+                                        <th>{{trans('lang.admin_name')}}</th>
+                                        <th>{{trans('lang.statistics_restaurant_name')}}</th>
+                                        <th># {{trans('lang.tab_orders')}}</th>
+                                        <th>$ {{trans('lang.tab_orders')}}</th>
+                                        <th>{{trans('lang.statistics_super_commission')}}</th>
+                                        <th>{{trans('lang.statistics_area_commission')}}</th>
+                                        <th>{{trans('lang.statistics_total_pay')}}</th>
+                                        <th>{{trans('lang.payment_plural')}}</th>
+                                        <th>{{trans('lang.statistics_remaining_payments')}}</th>
                                     </tr>
                                 </thead>
-                                <tbody id="table_restaurants">
+                                <tbody id="table_restaurant">
                                 </tbody>
                             </table>
                             <div class="data-table_paginate">
@@ -155,8 +138,6 @@ $zero = 0;
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -170,7 +151,8 @@ $zero = 0;
                             <div id="users-table_filter" class="pull-right">
                                 <label>{{trans('lang.search_by')}}</label>
                                 <select name="selected_search" id="selected_search" class="form-control input-sm">
-                                    <option value="title">{{trans('lang.title')}}</option>
+                                    <option value="title">{{trans('lang.area_name')}}</option>
+                                    <option value="title">{{trans('lang.area_admin_name')}}</option>
                                 </select>
                                 <div class="form-group">
                                     <input type="search" id="search" class="search form-control" placeholder="Search">
@@ -182,20 +164,20 @@ $zero = 0;
                         <div class="table-responsive m-t-10">
                             <table id="example24" class="display nowrap table table-hover table-striped table-bordered table table-striped" cellspacing="0" width="100%">
                                 <thead>
-                                <tr>
-                                    <td>{{trans('lang.area_name')}}</td>
-                                    <td>{{trans('lang.admin_name')}}</td>
-                                    <td>{{trans('lang.statistics_driver_name')}}</td>
-                                    <td># {{trans('lang.tab_orders')}}</td>
-                                    <td>$ {{trans('lang.tab_orders')}}</td>
-                                    <td>{{trans('lang.statistics_super_commission')}}</td>
-                                    <td>{{trans('lang.statistics_area_commission')}}</td>
-                                    <td>{{trans('lang.statistics_total_pay')}}</td>
-                                    <td>{{trans('lang.payment_plural')}}</td>
-                                    <td>{{trans('lang.statistics_remaining_payments')}}</td>
-                                </tr>
+                                    <tr>
+                                        <th>{{trans('lang.area_name')}}</th>
+                                        <th>{{trans('lang.admin_name')}}</th>
+                                        <th>{{trans('lang.statistics_driver_name')}}</th>
+                                        <th># {{trans('lang.tab_orders')}}</th>
+                                        <th>$ {{trans('lang.tab_orders')}}</th>
+                                        <th>{{trans('lang.statistics_super_commission')}}</th>
+                                        <th>{{trans('lang.statistics_area_commission')}}</th>
+                                        <th>{{trans('lang.statistics_total_pay')}}</th>
+                                        <th>{{trans('lang.payment_plural')}}</th>
+                                        <th>{{trans('lang.statistics_remaining_payments')}}</th>
+                                    </tr>
                                 </thead>
-                                <tbody id="append_restaurants">
+                                <tbody id="table_driver">
                                 </tbody>
                             </table>
                             <div class="data-table_paginate">
@@ -226,18 +208,28 @@ $zero = 0;
 <script>
 
     var area_admins = <?php echo $area_admins; ?>;
+    var role = "<?php echo $role; ?>";
+    console.log(area_admins);
     var general_added_res_total = 0, general_added_driver_total = 0;
-    var general_added_res_counts = Array(area_admins.length).fill(0);
-    var general_added_driver_counts = Array(area_admins.length).fill(0);
 
     var database = firebase.firestore();
-    var offest = 1;
-    var pagesize = 10;
-    var end = null;
-    var endarray = [];
-    var start = null;
-    var user_number = [];
-    var table_general = '';
+    var adminCommission = database.collection('settings').doc('AdminCommission');
+    var super_commission = 0, area_commission = 0;
+    adminCommission.get().then(async function (snapshots) {
+        super_commission = snapshots.data().super_commission;
+        area_commission = snapshots.data().area_commission;
+    });
+    var currentCurrency ='';
+    var currencyAtRight = false;
+    var refCurrency = database.collection('currencies').where('isActive', '==' , true);
+    refCurrency.get().then( async function(snapshots){
+        var currencyData = snapshots.docs[0].data();
+        currentCurrency = currencyData.symbol;
+        currencyAtRight = currencyData.symbolAtRight;
+    });
+
+    var data = [];
+    var table_general = '', table_restaurant = '', table_driver = '';
 
     function getResData(id) {
         return database.collection('vendors').where("admin_id", "==", parseInt(id));
@@ -251,51 +243,373 @@ $zero = 0;
 
         // jQuery("#data-table_processing").show();
 
-        // table_general = document.getElementById('table_general');
-        // table_general.innerHTML = getGeneralData();
+        table_general = document.getElementById('table_general');
+        table_restaurant = document.getElementById('table_restaurant');
+        table_driver = document.getElementById('table_driver');
+
+        getTableGeneralData().then(function (res) {
+            table_general.innerHTML = res;
+        });
+        getTableRestaurantData().then(function (res) {
+            table_restaurant.innerHTML = res;
+        });
+        getTableDriverData().then(function (res) {
+            table_driver.innerHTML = res;
+        });
     })
 
-    async function getGeneralData() {
+    function getDataFromSnapShots(snapshots) {
+        snapshots.docs.forEach((listval) => {
+            data.push(listval.data());
+        });
+    }
+
+    async function getTableGeneralData() {
         var html = '', i;
-        // debugger;
         for (i = 0 ; i < area_admins.length ; i ++) {
             html += '<tr>';
             html += '<td>' + area_admins[i].area_name + '</td>';
             html += '<td>' + area_admins[i].area_admin_name + '</td>';
 
-            var refResData = getResData(area_admins[i].id);
-            var refDriverData = getDriverData(area_admins[i].id);
-            console.log(area_admins[i].id);
+            let refResData = await getResData(area_admins[i].id);
+            let refDriverData = await getDriverData(area_admins[i].id);
 
             await refResData.get().then(function (snapshots) {
-                console.log(snapshots.docs.length);
                 general_added_res_total += snapshots.docs.length;
-                general_added_res_counts = snapshots.docs.length;
                 html += '<td>' + snapshots.docs.length + '</td>';
             });
 
             await refDriverData.get().then(function (snapshots) {
-                console.log(snapshots.docs.length);
                 general_added_driver_total += snapshots.docs.length;
-                general_added_driver_counts[i] = snapshots.docs.length;
                 html += '<td>' + snapshots.docs.length + '</td>';
             });
             html += '</tr>';
         }
+
+        return html;
     }
 
-    function tableGeneral() {
-        var html = '', i;
-        getGeneralData().then(res => {
-            for (i = 0 ; i < area_admins.length ; i ++) {
-                html += '<tr>';
-                html += '<td>' + area_admins[i].area_name + '</td>';
-                html += '<td>' + area_admins[i].area_admin_name + '</td>';
-                html += '<td>' + general_added_res_counts[i] + '</td>';
-                html += '<td>' + general_added_driver_counts[i] + '</td>';
-                html += '</tr>';
+    function getResOrderAmount(snapshotsProducts) {
+
+        var discount = snapshotsProducts.discount;
+        var tip_amount = snapshotsProducts.tip_amount;
+        var products = snapshotsProducts.products;
+        var deliveryCharge = snapshotsProducts.deliveryCharge;
+        var totalProductPrice=0;
+        var total_price = 0;
+
+        var intRegex = /^\d+$/;
+        var floatRegex = /^((\d+(\.\d *)?)|((\d*\.)?\d+))$/;
+
+        if (products) {
+            products.forEach((product) => {
+                var val=product;
+                if (val.price){
+                    /*if(val.hasOwnProperty('discountPrice') && val.discountPrice != '' && !isNaN(val.discountPrice)){
+                        price_item=parseFloat(val.discountPrice).toFixed(2);
+                    }else{*/
+                    price_item = parseFloat(val.price).toFixed(2);
+                    /*}*/
+                    extras_price_item = 0;
+                    if (val.extras_price && !isNaN(extras_price_item) && !isNaN(val.quantity)) {
+                        extras_price_item = (parseFloat(val.extras_price) * parseInt(val.quantity)).toFixed(2);
+                    }
+                    if (!isNaN(price_item) && !isNaN(val.quantity)) {
+                        totalProductPrice =  parseFloat(price_item) * parseInt(val.quantity);
+                    }
+                    var extras_price = 0;
+                    if (parseFloat(extras_price_item) != NaN && val.extras_price != undefined) {
+                        extras_price = extras_price_item;
+                    }
+                    totalProductPrice = parseFloat(extras_price) + parseFloat(totalProductPrice);
+                    totalProductPrice = parseFloat(totalProductPrice).toFixed(2);
+                    if (!isNaN(totalProductPrice)) {
+                        total_price += parseFloat(totalProductPrice);
+                    }
+                }
+            });
+        }
+
+        if ((intRegex.test(discount) || floatRegex.test(discount)) && !isNaN(discount)) {
+
+            discount = parseFloat(discount).toFixed(2);
+            total_price -= parseFloat(discount);
+            if (currencyAtRight) {
+                discount_val = discount+""+currentCurrency;
+            } else {
+                discount_val = currentCurrency+""+discount;
             }
+        }
+
+        tax = 0;
+        if (snapshotsProducts.hasOwnProperty('taxSetting')) {
+            if (snapshotsProducts.taxSetting.type && snapshotsProducts.taxSetting.tax) {
+                if (snapshotsProducts.taxSetting.type == "percent"){
+                    tax = (snapshotsProducts.taxSetting.tax * total_price) / 100;
+                } else {
+                    tax = snapshotsProducts.taxSetting.tax;
+                }
+            }
+        }
+
+        if (!isNaN(tax)) {
+            total_price = total_price + tax;
+        }
+
+        if ((intRegex.test(deliveryCharge) || floatRegex.test(deliveryCharge)) && !isNaN(deliveryCharge)) {
+
+            deliveryCharge = parseFloat(deliveryCharge).toFixed(2);
+            total_price += parseFloat(deliveryCharge);
+
+            if (currencyAtRight) {
+                deliveryCharge_val = deliveryCharge + "" + currentCurrency;
+            } else {
+                deliveryCharge_val = currentCurrency + "" + deliveryCharge;
+            }
+        }
+
+        if (intRegex.test(tip_amount) || floatRegex.test(tip_amount) && !isNaN(tip_amount)) {
+
+            tip_amount = parseFloat(tip_amount).toFixed(2);
+            total_price += parseFloat(tip_amount);
+            total_price = parseFloat(total_price).toFixed(2);
+
+            if (currencyAtRight) {
+                tip_amount_val = tip_amount + "" + currentCurrency;
+            } else {
+                tip_amount_val = currentCurrency + "" + tip_amount;
+            }
+        }
+
+        return total_price;
+    }
+
+    async function resData(vendorID){
+
+        var paid_price = 0;
+        var total_price = 0;
+        var remaining = 0;
+        var order_count = 0;
+        var order_amount = 0;
+
+        await database.collection('payouts').where('vendorID', '==', vendorID).where('paymentStatus','==','Success').get().then( async function(payoutSnapshots){
+            payoutSnapshots.docs.forEach((payout)=>{
+                var payoutData = payout.data();
+                paid_price = parseFloat(paid_price) + parseFloat(payoutData.amount);
+            })
+            await database.collection('users').where('vendorID','==',vendorID).get().then( async function(vendorSnapshots){
+                var vendor = [];
+                var wallet_amount = 0;
+                if (vendorSnapshots.docs.length) {
+                    vendor = vendorSnapshots.docs[0].data();
+                    if (isNaN(vendor.wallet_amount) || vendor.wallet_amount == undefined) {
+                        wallet_amount = 0;
+                    } else {
+                        wallet_amount = vendor.wallet_amount;
+                    }
+                }
+                remaining = wallet_amount;
+                total_price = wallet_amount + paid_price;
+                if (Number.isNaN(paid_price)) { paid_price=0; }
+                if (Number.isNaN(total_price)) { total_price=0; }
+                if (Number.isNaN(remaining)) { remaining=0; }
+                if (currencyAtRight) {
+                    total_price_val = total_price+""+currentCurrency;
+                    paid_price_val = paid_price+""+currentCurrency;
+                    remaining_val = remaining+""+currentCurrency;
+                } else {
+                    total_price_val = currentCurrency+""+total_price;
+                    paid_price_val = currentCurrency+""+paid_price;
+                    remaining_val = currentCurrency+""+remaining;
+                }
+
+                jQuery(".res_total_"+vendorID).html(total_price_val);
+                jQuery(".res_name_"+vendorID).html(paid_price_val);
+                jQuery(".res_remaining_"+vendorID).html(remaining_val);
+            });
+
         });
+        await database.collection('restaurant_orders').where('vendorID', '==', vendorID).where('status', 'in', ["Order Completed"]).get().then(async function(orderSnapShots) {
+            order_count = orderSnapShots.docs.length;
+            if (order_count == 0) {
+                order_amount = 0;
+            } else {
+                orderSnapShots.docs.forEach((doc) => {
+                    order_amount += parseFloat(getResOrderAmount(doc.data()));
+                });
+            }
+
+            if (Number.isNaN(order_count)) { order_count = 0; }
+            if (Number.isNaN(order_amount)) { order_amount = 0; }
+
+            if (currencyAtRight){
+                order_count_val = order_count;
+                order_amount_val = order_amount + "" + currentCurrency;
+            } else {
+                order_count_val = order_count;
+                order_amount_val = currentCurrency + " " + order_amount;
+            }
+            jQuery(".res_order_count_" + vendorID).html(order_count_val);
+            jQuery(".res_order_amount_" + vendorID).html(order_amount_val);
+        });
+        return remaining;
+
+    }
+
+    function buildResHTML(area_name, area_admin_name) {
+        let html = '';
+
+        for (let i = 0 ; i < data.length ; i ++) {
+            let res = resData(data[i].id);
+
+            html += '<tr>';
+            html += '<td>' + area_name + '</td>';
+            html += '<td>' + area_admin_name + '</td>';
+            html += '<td>' + data[i].title + '</td>';
+            html += '<td class="res_order_count_' + data[i].id + '"></td>';
+            html += '<td class="res_order_amount_' + data[i].id + '"></td>';
+            html += '<td>' + super_commission + '</td>';
+            html += '<td>' + area_commission + '</td>';
+            html += '<td class="res_total_' + data[i].id + '"></td>';
+            html += '<td class="res_name_' + data[i].id + '"></td>';
+            html += '<td class="res_remaining_' + data[i].id + '"></td>';
+            html += '</tr>';
+        }
+        return html;
+    }
+
+    async function getTableRestaurantData() {
+        let html = '', i;
+        for (i = 0 ; i < area_admins.length ; i ++) {
+            let area_name = area_admins[i].area_name;
+            let area_admin_name = area_admins[i].area_admin_name;
+            let refResData = await getResData(area_admins[i].id);
+
+            await refResData.get().then(async function (snapshots) {
+                data = [];
+                await getDataFromSnapShots(snapshots);
+                html += await buildResHTML(area_name, area_admin_name);
+            });
+        }
+        return html;
+    }
+
+    async function driverData(driverID){
+
+        var paid_price = 0;
+        var total_price = 0;
+        var remaining = 0;
+        var order_count = 0;
+        var order_amount = 0;
+
+        await database.collection('driver_payouts').where('driverID', '==', driverID).get().then( async function(payoutSnapshots) {
+            payoutSnapshots.docs.forEach((payout) => {
+                var payoutData = payout.data();
+                paid_price = parseFloat(paid_price) + parseFloat(payoutData.amount);
+            })
+            await database.collection('users').where('id','==',driverID).get().then( async function(driverSnapshots) {
+                var driver = [];
+                var wallet_amount = 0;
+                if (driverSnapshots.docs.length) {
+                    driver = driverSnapshots.docs[0].data();
+                    if (isNaN(driver.wallet_amount) || driver.wallet_amount == undefined) {
+                        wallet_amount=0;
+                    } else {
+                        wallet_amount=driver.wallet_amount;
+                    }
+                }
+                remaining = wallet_amount;
+                total_price = wallet_amount + paid_price;
+                if (Number.isNaN(paid_price)) {
+                    paid_price=0;
+                }
+                if (Number.isNaN(total_price)) {
+                    total_price=0;
+                }
+                if (Number.isNaN(remaining)) {
+                    remaining=0;
+                }
+
+                if (currencyAtRight) {
+                    total_price_val = total_price + "" + currentCurrency;
+                    paid_price_val = paid_price + "" + currentCurrency;
+                    remaining_val = remaining + "" + currentCurrency;
+                } else {
+                    total_price_val = currentCurrency + "" + total_price;
+                    paid_price_val = currentCurrency + "" + paid_price;
+                    remaining_val = currentCurrency + "" + remaining;
+                }
+                jQuery(".drv_total_" + driverID).html(total_price_val);
+                jQuery(".drv_name_" + driverID).html(paid_price_val);
+                jQuery(".drv_remaining_" + driverID).html(remaining_val);
+            });
+        });
+        await database.collection('order_transaction').where('driverID', '==', driverID).get().then( async function(orderSnapShots) {
+            order_count = orderSnapShots.docs.length;
+            if (order_count == 0) {
+                order_amount = 0;
+            } else {
+                orderSnapShots.docs.forEach((doc) => {
+                    order_amount += doc.data().driverAmount;
+                });
+            }
+
+            if (Number.isNaN(order_count)){
+                order_count = 0;
+            }
+            if (Number.isNaN(order_amount)){
+                order_amount = 0;
+            }
+
+            if (currencyAtRight){
+                order_count_val = order_count;
+                order_amount_val = order_amount + "" + currentCurrency;
+            } else {
+                order_count_val = order_count;
+                order_amount_val = currentCurrency + " " + order_amount;
+            }
+            jQuery(".drv_order_count_" + driverID).html(order_count_val);
+            jQuery(".drv_order_amount_" + driverID).html(order_amount_val);
+        })
+        return remaining;
+    }
+
+    function buildDriverHTML(area_name, area_admin_name) {
+        let html = '';
+
+        for (let i = 0 ; i < data.length ; i ++) {
+            let driver = driverData(data[i].id);
+
+            html += '<tr>';
+            html += '<td>' + area_name + '</td>';
+            html += '<td>' + area_admin_name + '</td>';
+            html += '<td>' + data[i].firstName + ' ' + data[i].lastName + '</td>';
+            html += '<td class="drv_order_count_' + data[i].id + '"></td>';
+            html += '<td class="drv_order_amount_' + data[i].id + '"></td>';
+            html += '<td>' + super_commission + '</td>';
+            html += '<td>' + area_commission + '</td>';
+            html += '<td class="drv_total_' + data[i].id + '"></td>';
+            html += '<td class="drv_name_' + data[i].id + '"></td>';
+            html += '<td class="drv_remaining_' + data[i].id + '"></td>';
+            html += '</tr>';
+        }
+        return html;
+    }
+
+    async function getTableDriverData() {
+        let html = '', i;
+        for (i = 0 ; i < area_admins.length ; i ++) {
+            let area_name = area_admins[i].area_name;
+            let area_admin_name = area_admins[i].area_admin_name;
+            let refDriverData = await getDriverData(area_admins[i].id);
+
+            await refDriverData.get().then(async function (snapshots) {
+                data = [];
+                await getDataFromSnapShots(snapshots);
+                html += await buildDriverHTML(area_name, area_admin_name);
+            });
+        }
+
         return html;
     }
 

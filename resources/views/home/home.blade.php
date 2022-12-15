@@ -108,7 +108,7 @@ error_reporting(E_ALL ^ E_NOTICE);
                             <div class="p-10 bg-info col-md-12 text-center">
                                 <h3 class="text-white box m-b-0"><i class="mdi mdi-bank"></i></h3></div>
                             <div class="align-self-center pt-3 col-md-12 text-center">
-                                <h3 class="m-b-0 text-info" id="earnings_count"></h3>
+                                <h3 class="m-b-0 text-info" id="earnings_count">0</h3>
                                 <h5 class="text-muted m-b-0">
                                     {{trans('lang.dashboard_total_earnings')}}<span style="font-size: 11px">({{trans('lang.dashboard_after taxes')}})</span>
                                 </h5>
@@ -507,6 +507,7 @@ error_reporting(E_ALL ^ E_NOTICE);
                     adminCommission = currentCurrency + "" + parseFloat(adminCommission).toFixed(2);
                 }
 
+                $("#earnings_count").empty();
                 $("#earnings_count").append(totalEarning);
                 $("#earnings_count_graph").append(totalEarning);
                 $("#admincommission_count_graph").append(adminCommission);
